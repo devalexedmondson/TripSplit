@@ -64,7 +64,14 @@ namespace TripSplit.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "UserRoles")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
         public string UserRoles { get; set; }
 
         [Required]
