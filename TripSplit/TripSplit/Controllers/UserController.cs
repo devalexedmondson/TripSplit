@@ -11,24 +11,51 @@ namespace TripSplit.Controllers
 {
     public class UserController : Controller
     {
+        ApplicationDbContext db;
+
+        public UserController()
+        {
+            db = new ApplicationDbContext();
+        }
+
         // GET: UserIndex
         public ActionResult UserIndex()
         {
             return View();
         }
 
-        //GET: CreateATrip
-        public ActionResult CreateATrip()
+        //GET: CreateDrivingTrip
+        public ActionResult CreateDrivingTrip()
         {
+            ViewBag.Name = new SelectList(db.Theme.ToList(), "Id", "destinationTheme");
             return View();
         }
 
         //
-        //POST: CreateATrip
+        //POST: CreateDrivingTrip
         [HttpPost]
-        public ActionResult CreateTrip()
+        public ActionResult CreateDrivingTrip(CreateDrivingTripViewModel model)
         {
+            var type = "Driving";
+            var trip = new Trip
+            {
+                IsPublic = model.IsPublic,
+                Type = model.Type,
+                originInput = model.originInput,
+                destinationInput = model.destinationInput,
+                Cost = model.Cost,
+                Theme = new Theme
+                {
+                    destinationTheme = model.Theme
+                }
+            };
+            return RedirectToAction("UserIndex","User"); //send to verification page
+        }
 
+        //
+        // GET: CreateFlyingTrip
+        public ActionResult CreateFlyingTrip()
+        {
             return View();
         }
 
@@ -43,20 +70,7 @@ namespace TripSplit.Controllers
         {
             return View();
         }
+        
 
-        public string ThemeTravel()
-        {
-            //var userTeamSelection = (passed from create roster)
-            WebRequest request = WebRequest.Create("https://api.test.sabre.com/v1/lists/supported/shop/themes");
-            WebResponse response = request.GetResponse();
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string responseFromServer = reader.ReadToEnd();
-            Console.WriteLine(responseFromServer);
-            reader.Close();
-            response.Close();
-            return responseFromServer;
-        }
     }
 }

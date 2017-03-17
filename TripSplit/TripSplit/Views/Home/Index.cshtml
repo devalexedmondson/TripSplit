@@ -14,13 +14,13 @@
     </div>
 
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Start Splitting</h2>
         <p>
             Create a profile and search some of the existing trips that are taking place right now or create your own!
         </p>
         <p><a class="btn btn-default" href="http://localhost:2437/Account/Register">Learn more &raquo;</a></p>
     </div>
-   
+
     <div class="col-md-4">
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
@@ -31,24 +31,5 @@
 <div class="col-md-2">
 
 </div>
-<div id="googleMap" style="margin: 0 auto 0 auto; width:75%; height:400px;"></div>
 
-<script>
-        function myMap() {
-            var customerMap = {
-                center: { lat: 43.034134, lng: -87.911953 },
-                zoom: 13
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), customerMap);
 
-            var marker = new google.maps.Marker({
-                position: { lat: 43.034134, lng: -87.911953 },
-                draggable: false,
-                title: "FantasyTracker",
-                animation: google.maps.Animation.DROP
-            });
-            marker.setMap(map);
-        }
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMNM_60o9sgGpPF_aB1LBVHt-ffd4ql_Q&callback=myMap">
-</script>

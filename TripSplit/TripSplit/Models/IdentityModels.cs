@@ -26,6 +26,7 @@ namespace TripSplit.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Trip> Trip { get; set; }
+        public DbSet<Theme> Theme { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

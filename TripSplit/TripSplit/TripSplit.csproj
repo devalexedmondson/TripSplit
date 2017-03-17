@@ -216,10 +216,27 @@
     <Compile Include="Migrations\201703162013132_Trip model added.Designer.cs">
       <DependentUpon>201703162013132_Trip model added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703171533316_Start and End location changed to match google api format, deleted waypoint.cs" />
+    <Compile Include="Migrations\201703171533316_Start and End location changed to match google api format, deleted waypoint.Designer.cs">
+      <DependentUpon>201703171533316_Start and End location changed to match google api format, deleted waypoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703172152511_added theme table and added FK on Trip table.cs" />
+    <Compile Include="Migrations\201703172152511_added theme table and added FK on Trip table.Designer.cs">
+      <DependentUpon>201703172152511_added theme table and added FK on Trip table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703172154484_poulate theme.cs" />
+    <Compile Include="Migrations\201703172154484_poulate theme.Designer.cs">
+      <DependentUpon>201703172154484_poulate theme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703172214106_added Theme table.cs" />
+    <Compile Include="Migrations\201703172214106_added Theme table.Designer.cs">
+      <DependentUpon>201703172214106_added Theme table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Theme.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -309,10 +326,11 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\User\UserIndex.cshtml" />
     <Content Include="Views\User\Trips.cshtml" />
-    <Content Include="Views\User\CreateATrip.cshtml" />
+    <Content Include="Views\User\CreateDrivingTrip.cshtml" />
     <Content Include="Views\User\UserTripAgreement.cshtml" />
     <Content Include="Views\Admin\Offers.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <Content Include="Views\User\CreateFlyingTrip.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -332,6 +350,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703162013132_Trip model added.resx">
       <DependentUpon>201703162013132_Trip model added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703171533316_Start and End location changed to match google api format, deleted waypoint.resx">
+      <DependentUpon>201703171533316_Start and End location changed to match google api format, deleted waypoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703172152511_added theme table and added FK on Trip table.resx">
+      <DependentUpon>201703172152511_added theme table and added FK on Trip table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703172154484_poulate theme.resx">
+      <DependentUpon>201703172154484_poulate theme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703172214106_added Theme table.resx">
+      <DependentUpon>201703172214106_added Theme table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

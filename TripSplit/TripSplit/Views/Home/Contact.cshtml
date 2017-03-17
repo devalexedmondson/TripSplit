@@ -13,3 +13,25 @@
 <address>
     <strong>Let me know what you think:</strong><a href="mailto:alexedmondson20@gmail.com"> Support and suggestions</a><br />
 </address>
+
+<div id="googleMap" style="margin: 0 auto 0 auto; width:75%; height:400px;"></div>
+
+<script>
+    function myMap() {
+        var customerMap = {
+            center: { lat: 43.034134, lng: -87.911953 },
+            zoom: 13
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), customerMap);
+
+        var marker = new google.maps.Marker({
+            position: { lat: 43.034134, lng: -87.911953 },
+            draggable: false,
+            title: "FantasyTracker",
+            animation: google.maps.Animation.DROP
+        });
+        marker.setMap(map);
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMNM_60o9sgGpPF_aB1LBVHt-ffd4ql_Q&callback=myMap">
+</script>
