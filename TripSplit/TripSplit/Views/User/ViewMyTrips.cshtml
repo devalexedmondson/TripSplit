@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<TripSplit.Models.Trip>
 @{
-    ViewBag.Title = "Trips";
+    ViewBag.Title = "ViewMyTrips";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Trips</h2>
+<h2>My Trips</h2>
 @if (!Model.Any())
 {
-    <p>We don't have any available trips yet.</p>
+    <p>You don' seem to have any trips planned yet.</p>
+    
 }
 else
 {
@@ -17,19 +18,10 @@ else
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.originInput)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.destinationInput)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tripDistance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tripDuration)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
@@ -42,23 +34,13 @@ else
         {
             <tr>
                 <td>
-                    @Html.ActionLink(trip.Name, "Detail", "User", new { id = trip.Id })
-                    @*@Html.DisplayFor(modelItem => trip.Name)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.Type)
+                    @Html.DisplayFor(modelItem => trip.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => trip.originInput)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => trip.destinationInput)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.tripDistance)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.tripDuration)
                 </td>
                 <td>
                     $@Html.DisplayFor(modelItem => trip.Cost)
@@ -69,9 +51,5 @@ else
             </tr>
         }
     </table>
-
 }
-
-
-    
 

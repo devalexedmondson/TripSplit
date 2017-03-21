@@ -18,5 +18,7 @@ namespace TripSplit.Controllers
         {
             return View();
         }
+
+
     }
 }

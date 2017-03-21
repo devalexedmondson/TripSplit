@@ -15,8 +15,12 @@ namespace TripSplit.Models
     {
         [Required]
         [Display(Name = "Trip Privacy")]
-        public bool IsPublic { get; set; }
-        
+        public string IsPublic { get; set; }
+
+        [Required]
+        [Display(Name = "Trip Name")]
+        public string Name { get; set; }
+                
         [Display(Name = "Trip Type")]
         public string Type { get; set; }
 
@@ -29,13 +33,19 @@ namespace TripSplit.Models
         public string destinationInput { get; set; }
 
         [Required]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Use numbers for zipcode please")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Use numbers for cost please. Example: 150")]
         [Display(Name = "Cost of trip?")]
         public double Cost { get; set; }
 
         [Required]
         [Display(Name = "Theme")]
         public string Theme { get; set; }
+
+        public double tripDistance { get; set; }
+        public double tripDuration { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; }
+
+        
     }
 
     public class CreateFlyingTripViewModel
@@ -49,6 +59,11 @@ namespace TripSplit.Models
     }
 
     public class UserTripAgreement
+    {
+
+    }
+
+    public class DetailsViewModel
     {
 
     }

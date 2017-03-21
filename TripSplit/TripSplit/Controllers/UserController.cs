@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Data.Entity;
+
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TripSplit.Models;
+using Microsoft.AspNet.Identity;
 
 namespace TripSplit.Controllers
 {
@@ -35,24 +38,78 @@ namespace TripSplit.Controllers
         //POST: CreateDrivingTrip
         [HttpPost]
         public ActionResult CreateDrivingTrip(CreateDrivingTripViewModel model)
-        {
+        {//Trip.Users.Add(trip)
+
+           
             var type = "Driving";
             var trip = new Trip
             {
                 IsPublic = model.IsPublic,
-                Type = model.Type,
+                Name = model.Name,
+                Type = type,
                 originInput = model.originInput,
                 destinationInput = model.destinationInput,
                 Cost = model.Cost,
-                Theme = new Theme
-                {
-                    destinationTheme = model.Theme
-                }
+                tripDistance = model.tripDistance,
+                tripDuration = model.tripDuration,
+                ThemeId = int.Parse(model.Theme)
+                
             };
-            return RedirectToAction("UserIndex","User"); //send to verification page
+            var user = db.Users.Find(User.Identity.GetUserId());
+            trip.Users = new List<ApplicationUser>();
+            trip.Users.Add(user);
+            db.Trip.Add(trip);
+            db.SaveChanges();
+            return RedirectToAction("VerifyTrip","User"); //send to verification page
         }
 
         //
+        //GET: VerifyTrip
+        public ActionResult VerifyTrip()
+        {
+            return View();
+        }
+
+        //
+        //GET: ViewMyTrips
+        public ActionResult ViewMyTrips()
+        {
+            var myTrips = db.Trip.ToList();
+            return View(myTrips);
+        }
+        
+        //DETAILS   
+        //GET: Details
+        public ActionResult Detail(int id)
+        {
+            var trip = db.Trip.SingleOrDefault(t => t.Id == id);
+
+            if(trip == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trip);
+        }
+
+        // EDIT TRIP
+        //GET: EditTrip
+        public ActionResult Edit(int id)
+        {
+            var trip = db.Trip.SingleOrDefault(c => c.Id == id);
+
+            if(trip== null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = new CreateDrivingTripViewModel
+            {
+               
+            };
+            return View("CreateDrivingTrip");
+        }
+
+       
+        //CREATEFLYINGTRIP
         // GET: CreateFlyingTrip
         public ActionResult CreateFlyingTrip()
         {
@@ -62,7 +119,8 @@ namespace TripSplit.Controllers
         //GET: Trips
         public ActionResult Trips()
         {
-            return View();
+            var trips = db.Trip.ToList();
+            return View(trips);
         }
 
         //GET: UserTripAgreement

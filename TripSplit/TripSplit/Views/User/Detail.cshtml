@@ -1,0 +1,23 @@
+﻿@model TripSplit.Models.Trip
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+@Model.Name
+
+<ul>
+    <li>Starting Location: @Model.originInput</li>
+    <li>Ending Location : @Model.destinationInput</li>
+    <li>Trip Type: @Model.Type</li>
+    <li>Trip Distance: @Model.tripDistance</li>
+    <li>Trip Duration: @Model.tripDuration</li>
+    <li>Cost: @Model.Cost</li>
+    <li>Theme: @Model.Theme.destinationTheme</li>
+</ul>
+
+<p>Click here if you would like to join this trip</p>
+
+

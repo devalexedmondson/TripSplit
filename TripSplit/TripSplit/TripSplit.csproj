@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CkEditor">
+      <HintPath>..\..\..\..\..\Desktop\CkEditor\CkEditor\bin\CkEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET">
+      <HintPath>..\..\..\..\..\Desktop\CkEditor\CkEditor\bin\CKEditor.NET.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.22.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.22.0\lib\net45\Google.Apis.dll</HintPath>
       <Private>True</Private>
@@ -232,6 +238,18 @@
     <Compile Include="Migrations\201703172214106_added Theme table.Designer.cs">
       <DependentUpon>201703172214106_added Theme table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703201419440_changed Ispublic to string.cs" />
+    <Compile Include="Migrations\201703201419440_changed Ispublic to string.Designer.cs">
+      <DependentUpon>201703201419440_changed Ispublic to string.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703201623184_Added Name to trip table.cs" />
+    <Compile Include="Migrations\201703201623184_Added Name to trip table.Designer.cs">
+      <DependentUpon>201703201623184_Added Name to trip table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703202134149_Added trip distance and duration to trip table.cs" />
+    <Compile Include="Migrations\201703202134149_Added trip distance and duration to trip table.Designer.cs">
+      <DependentUpon>201703202134149_Added trip distance and duration to trip table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -331,6 +349,9 @@
     <Content Include="Views\Admin\Offers.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
     <Content Include="Views\User\CreateFlyingTrip.cshtml" />
+    <Content Include="Views\User\VerifyTrip.cshtml" />
+    <Content Include="Views\User\ViewMyTrips.cshtml" />
+    <Content Include="Views\User\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -362,6 +383,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703172214106_added Theme table.resx">
       <DependentUpon>201703172214106_added Theme table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201419440_changed Ispublic to string.resx">
+      <DependentUpon>201703201419440_changed Ispublic to string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703201623184_Added Name to trip table.resx">
+      <DependentUpon>201703201623184_Added Name to trip table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703202134149_Added trip distance and duration to trip table.resx">
+      <DependentUpon>201703202134149_Added trip distance and duration to trip table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
