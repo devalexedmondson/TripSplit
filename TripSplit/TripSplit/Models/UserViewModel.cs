@@ -43,7 +43,7 @@ namespace TripSplit.Models
 
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
-        public ICollection<ApplicationUser> Users { get; set; }
+        public int totalUsersOnTrip { get; set; }
 
         
     }
@@ -58,9 +58,8 @@ namespace TripSplit.Models
 
     }
 
-    public class UserTripAgreement
+    public class UserTripAgreementViewModel
     {
-
     }
 
     public class DetailsViewModel

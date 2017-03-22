@@ -7,8 +7,7 @@
 <h2>My Trips</h2>
 @if (!Model.Any())
 {
-    <p>You don' seem to have any trips planned yet.</p>
-    
+    <p>You don't have any available trips yet.</p>
 }
 else
 {
@@ -18,38 +17,63 @@ else
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.originInput)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.destinationInput)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.tripDistance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tripDuration)
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Theme)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalUsersOnTrip)
+            </th>
+
         </tr>
         @foreach (var trip in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.originInput)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.destinationInput)
-                </td>
-                <td>
-                    $@Html.DisplayFor(modelItem => trip.Cost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.Theme.destinationTheme)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.originInput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.destinationInput)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => trip.tripDistance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.tripDuration)
+                    </td>*@
+                    <td>
+                        $@Html.DisplayFor(modelItem => trip.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.Theme.destinationTheme)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.totalUsersOnTrip)
+                    </td>
+                </tr>
         }
     </table>
-}
 
+}

@@ -1,10 +1,53 @@
-﻿
+﻿@model TripSplit.Models.Trip
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "UserTripAgreement";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UserTripAgreement</h2>
+<h2>User Trip Agreement</h2>
 
+<h3>Trip Name: @Model.Name</h3>
 
+<ul>
+    <li>Starting Location: @Model.originInput</li>
+    <li>Ending Location : @Model.destinationInput</li>
+    <li>Trip Type: @Model.Type</li>
+    @*<li>Trip Distance: @Model.tripDistance</li>
+    <li>Trip Duration: @Model.tripDuration</li>*@
+    <li>Cost: $@Model.Cost</li>
+    @*<li>Theme: @Model.Theme.destinationTheme</li>*@
+</ul>
+
+<p>The following TripSplit's agree to the following terms.</p>
+<p>User1:@(User.Identity.GetUserName())</p>
+@*@foreach (var user in trip)
+{
+    <p>User2:USER THAT MADE THE TRIP</p>
+}*@
+
+@using (Html.BeginForm("UserTripAgreement", "User", FormMethod.Post, new { role = "form" }))
+{
+    <h4>TERM</h4>
+    <p>1. The term of this agreement begins on: <strong>@DateTime.Now.DayOfWeek, @DateTime.Now.Day @DateTime.Now.Year</strong></p>
+    <h4>COST OF TRIP</h4>
+    <p>2. The cost of the trip is <strong>$@Model.Cost</strong>.</p>
+    <p>3. All TripSplit's agree that if any act or failure to act by any of them results in any late fees or costs for failure to pay their portion, will be responsible for all costs and fees of the Splitters who paid on time.</p>
+    <h4>TRIP RULES</h4>
+    <p>4. All TripSplit's agree to act reasonably in their dealings with each other and to refrain from any behavior, action or inaction that they know, or reasonably out to know, will interfere with other TripSplit's quiet enjoyment. All TripSplit's agree to discuss concerns frankly and in a timely manner, and to refrain from emotional outbursts. Should negotiation become necessary, all TripSplit's agree to negotiate in good faith. All TripSplit's agree to respect each others' property, privacy and sleep schedules and to comply with all reasonable requests whereever possible.</p>
+
+    <p>We, the undersigned, herby indicate by our signatures below that:</p>
+
+    <ul>
+        <li>we have read this full agreement;</li>
+        <li>we understand all it contains; and</li>
+        <li>we agree to be bound by its terms and conditions.</li>
+    </ul>
+    <div class="form-group" style="margin-top: 12px">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit" />
+        </div>
+    </div>
+}
+   
 

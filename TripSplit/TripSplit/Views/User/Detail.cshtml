@@ -6,18 +6,20 @@
 
 <h2>Detail</h2>
 
-@Model.Name
+<h3>Trip Name: @Model.Name</h3>
 
 <ul>
     <li>Starting Location: @Model.originInput</li>
     <li>Ending Location : @Model.destinationInput</li>
     <li>Trip Type: @Model.Type</li>
-    <li>Trip Distance: @Model.tripDistance</li>
-    <li>Trip Duration: @Model.tripDuration</li>
-    <li>Cost: @Model.Cost</li>
-    <li>Theme: @Model.Theme.destinationTheme</li>
+    @*<li>Trip Distance: @Model.tripDistance</li>
+    <li>Trip Duration: @Model.tripDuration</li>*@
+    <li>Cost: $@Model.Cost</li>
+    @*<li>Theme: @Model.Theme.destinationTheme</li>*@
 </ul>
 
-<p>Click here if you would like to join this trip</p>
+<p>@Html.ActionLink("Click Here", "UserTripAgreement", "User", new { id = Model.Id }, null) if you would like to join this trip. Before joining this trip, know that you will be splitting the cost of the trip, 50/50. Example, if the trip is $100, you will be responsible for $50.</p>
+
+
 
 

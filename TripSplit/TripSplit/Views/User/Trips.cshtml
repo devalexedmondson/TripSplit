@@ -25,48 +25,57 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.destinationInput)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.tripDistance)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.tripDuration)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Theme)
+                @Html.DisplayNameFor(model => model.ThemeId )
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalUsersOnTrip)
+            </th>
+
         </tr>
         @foreach (var trip in Model)
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(trip.Name, "Detail", "User", new { id = trip.Id })
-                    @*@Html.DisplayFor(modelItem => trip.Name)*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.Type)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.originInput)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.destinationInput)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.tripDistance)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.tripDuration)
-                </td>
-                <td>
-                    $@Html.DisplayFor(modelItem => trip.Cost)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => trip.Theme.destinationTheme)
-                </td>
-            </tr>
+            if (trip.IsPublic == "public")
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(trip.Name, "Detail", "User", new { id = trip.Id }, null)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.originInput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.destinationInput)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => trip.tripDistance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.tripDuration)
+                    </td>*@
+                    <td>
+                        $@Html.DisplayFor(modelItem => trip.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.ThemeId )
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.totalUsersOnTrip)
+                    </td>
+                </tr>
+            }
         }
     </table>
 

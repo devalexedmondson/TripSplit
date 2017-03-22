@@ -19,6 +19,7 @@ namespace TripSplit.Models
         public double Cost { get; set; }
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
+        public int totalUsersOnTrip { get; set; }
 
         public Theme Theme { get; set; }
         [ForeignKey("Theme")]

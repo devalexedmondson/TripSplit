@@ -3,8 +3,15 @@
     ViewBag.Title = "UserIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>@(User.Identity.GetUserName())</h2>
+<div class="jumbotron">
+    <div >
+        <h1>TripSplit</h1>
+        <p class="lead">Affordable Transportation</p>
+        <h3>Welcome @(User.Identity.GetUserName())</h3>
+        <img src="~/Content/riverview.jpeg" alt="explorebook" width="500" height="300">
+    </div>
+        
+    </div>
 
 <div class="row">
     <div class="col-md-6">
@@ -12,15 +19,15 @@
         <p>
            Click the buttons below to choose your travel method. 
         </p>
-        <p><a class="btn btn-default" href="http://localhost:2437/User/CreateDrivingTrip">Drive &raquo;</a>
-        <a class="btn btn-default" href="http://localhost:2437/User/CreateFlyingTrip">Fly &raquo;</a></p>
+        <a class="btn btn-default" href="http://localhost:2437/User/CreateDrivingTrip">Drive &raquo;</a>
+       <a class="btn btn-default" href="http://localhost:2437/User/CreateFlyingTrip">Fly &raquo;</a>
     </div>
 
     <div class="col-md-6">
         @* Embedded calendar *@
         <h3>@(User.Identity.GetUserName()) Calendar</h3>
-        <a class="btn btn-default" href="http://localhost:2437/User/ViewMyTrips">View Your Trips</a>
-        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FChicago" style="border-width:0" width="450" height="400" frameborder="0" scrolling="no"></iframe>
+        <a class="btn btn-default" href="http://localhost:2437/User/ViewMyTrips">View Your Trips &raquo;</a>
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FChicago" style="border-width:0" width="450" height="300" frameborder="0" scrolling="no"></iframe>
        
     </div>
 </div>
