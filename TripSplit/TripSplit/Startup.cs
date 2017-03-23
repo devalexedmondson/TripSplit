@@ -30,8 +30,8 @@ namespace TripSplit
                 //Admin super that maintains website
 
                 var user = new ApplicationUser();
-                user.UserName = "Admin";
-                user.Email = "alexedmondson20@gmail.com";
+                user.UserName = "MasterSplitter";
+                user.Email = "admin@gmail.com";
 
                 string userPass = "Password1234";
 
