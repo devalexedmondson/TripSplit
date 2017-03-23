@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201703211529264_Added totalUsersOnTrip to trip table.Designer.cs">
       <DependentUpon>201703211529264_Added totalUsersOnTrip to trip table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703222226363_added departure and return date to trip table.cs" />
+    <Compile Include="Migrations\201703222226363_added departure and return date to trip table.Designer.cs">
+      <DependentUpon>201703222226363_added departure and return date to trip table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -274,7 +278,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\explorebook.jpeg" />
+    <Content Include="Content\MapCollage.jpg" />
     <Content Include="Content\materialize.css" />
+    <Content Include="Content\PlaneCollage.jpg" />
+    <Content Include="Content\Travelcollage.jpg" />
+    <Content Include="Content\TripSplitBanner.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -410,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703211529264_Added totalUsersOnTrip to trip table.resx">
       <DependentUpon>201703211529264_Added totalUsersOnTrip to trip table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703222226363_added departure and return date to trip table.resx">
+      <DependentUpon>201703222226363_added departure and return date to trip table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

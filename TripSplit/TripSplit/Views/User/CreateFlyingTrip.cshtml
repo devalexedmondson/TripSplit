@@ -1,13 +1,110 @@
-﻿
+﻿@model TripSplit.Models.CreateFlyingTripViewModel
 @{
     ViewBag.Title = "CreateFlyingTrip";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>You're leaving, on a jet plane</h2>
+<h1>You're leaving, on a jet plane...</h1>
 
-<ul>
+@* CAN ONLY REQUEST FLIGHTS THAT ARE 6 MONTHS OUT. EXAMPLE:AT THE TIME THAT THIS APPLICATION WAS MADE (3/22/17) CANNOT REQUEST ANY FLIGHTS THAT ARE SCHEDULED IN OCTOBER (10/01/2017) RIGHT NOW. *@
+@* CAN ONLY REQUEST TRIPS THAT ARE 16 DAYS LONG, ANY LONGER THAN THAT WILL THROW AN ERROR *@
 
-    <li>Add Sabre API</li>
-    <li>route to either embedded google map or Sable Travel by theme</li>
-</ul>
+<div class="row">
+    <div class="col-md-6">
+        <form class="form-horizontal" method="post">
+            <fieldset>
+                <legend>Enter Details</legend>
+                <div class="form-group">
+                    <label for="select" class="col-lg-2 control-label">Origin</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" name="originInput" required>
+                            <option></option>
+                            <option value="ORD">Chicago O'Hare</option>
+                            <option value="MDW">Chicago Midway</option>
+                            <option value="MKE">General Mitchell International</option>
+                            <option value="JFK">John F. Kennedy International</option>
+                            <option value="LAX">Los Angeles International</option>
+                            <option value="MCO">Orlando International</option>
+                            <option value="SFO">San Francisco International</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="select" class="col-lg-2 control-label">Destination</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" name="destinationInput" required>
+                            <option></option>
+                            <option value="ORD">Chicago O'Hare</option>
+                            <option value="MDW">Chicago Midway</option>
+                            <option value="MKE">General Mitchell International</option>
+                            <option value="JFK">John F. Kennedy International</option>
+                            <option value="LAX">Los Angeles International</option>
+                            <option value="MCO">Orlando International</option>
+                            <option value="SFO">San Francisco International</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Departure</label>
+                    <div class="col-lg-10">
+                        <input type="date" class="form-control" name="departureDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Return</label>
+                    <div class="col-lg-10">
+                        <input type="date" class="form-control" name="returnDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <input name="endpointName" type="hidden" value="Air Search" class="form-control">
+                        <input name="methodName" type="hidden" value="InstaFlights Search" class="form-control">
+                        <input name="httpMethod" type="hidden" value="GET" class="form-control">
+                        <input name="methodUri" type="hidden" value="/v1/shop/flights" class="form-control">
+
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <img src="~/Content/PlaneCollage.jpg" alt="explorebook" width="600" height="550">
+    </div>
+
+</div>
+
+
+
+<h2>Url</h2>
+@ViewBag.url
+<hr />
+<h2>Data</h2>
+@ViewBag.data
+
+<script>
+    //TODO
+    //Parse data the correct way
+    //Figure out how to display data on the page. 
+    
+    var data = @ViewBag.data;
+    var dataobject = JSON.parse(data);
+    
+    var airItinerary ;
+    var flightNumber = dataObject.OriginDestinationOption[0] ;
+    var departureTime ;
+    var arrivalTime ;
+    var totalFare  ;
+    var seatsRemaining ;
+
+    function getFlights(){
+        document.getElementById('FlightInfo').innerHTML = '<table><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Seats Remaining</th></tr>' + AirItinerary.forEach() + '<tr><td>' + flightNumber + '</td><td>' + departureTime + '</td><td>' + arrivalTime + '</td><td>' + totalFare + '</td><td>' + seatsRemaining + '</td></tr></table><br/><br><button type="submit" class="btn btn-primary">Submit</button> '
+    }
+
+    document.getElementById('FlightInfo')
+    //document.getElementById('FlightInfo').innerHTML = '<h3>Flight Information</h3><br/>'
+
+</script>

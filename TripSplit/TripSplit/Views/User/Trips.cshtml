@@ -25,6 +25,12 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.destinationInput)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.returnDate)
+            </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.tripDistance)
             </th>
@@ -58,6 +64,12 @@ else
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => trip.destinationInput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.departureDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.returnDate)
                     </td>
                     @*<td>
                         @Html.DisplayFor(modelItem => trip.tripDistance)

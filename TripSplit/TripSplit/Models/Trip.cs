@@ -16,6 +16,8 @@ namespace TripSplit.Models
         public string IsPublic { get; set; }
         public string originInput { get; set; }
         public string destinationInput { get; set; }
+        public string departureDate { get; set; }
+        public string returnDate { get; set; }
         public double Cost { get; set; }
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
