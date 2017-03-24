@@ -70,12 +70,12 @@ namespace TripSplit.Controllers
             db.SaveChanges();
 
             //MAIL TO CUSTOMER USING MAILTRAP.IO
-            //var client = new SmtpClient("smtp.mailtrap.io", 2525)
-            //{
-            //    Credentials = new NetworkCredential("3cad2a6d8a23a7", "150ffbb33ba612"),
-            //    EnableSsl = true
-            //};
-            //client.Send("MasterSplitter@TripSplit.com", user.Email, "TripSplit", "Congrats on booking your trip! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nDeparture Date: " + trip.departureDate + "\nReturn Date: " + trip.returnDate +"\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
+            var client = new SmtpClient("smtp.mailtrap.io", 2525)
+            {
+                Credentials = new NetworkCredential("3cad2a6d8a23a7", "150ffbb33ba612"),
+                EnableSsl = true
+            };
+            client.Send("MasterSplitter@TripSplit.com", user.Email, "TripSplit", "Congrats on booking your trip! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nDeparture Date: " + trip.departureDate + "\nReturn Date: " + trip.returnDate + "\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
 
             return RedirectToAction("VerifyTrip", "User");
 
@@ -359,7 +359,7 @@ namespace TripSplit.Controllers
                 EnableSsl = true
             };
             client.Send("MasterSplitter@TripSplit.com", user.Email, "You Split The Trip!", "Congrats on booking and splitting your trip! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nFlight Number: " + trip.flightNumber + "\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
-
+            
             return RedirectToAction("VerifyTrip", "User");
 
             #region MailGun

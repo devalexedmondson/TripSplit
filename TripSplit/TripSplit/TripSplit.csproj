@@ -291,6 +291,7 @@
     <Content Include="Content\materialize.css" />
     <Content Include="Content\PlaneCollage.jpg" />
     <Content Include="Content\Travelcollage.jpg" />
+    <Content Include="Content\travelwaitingCollage.jpg" />
     <Content Include="Content\TripSplitBanner.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
