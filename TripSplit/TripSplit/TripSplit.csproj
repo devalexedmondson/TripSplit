@@ -266,6 +266,10 @@
     <Compile Include="Migrations\201703240253276_added flight number to trip.Designer.cs">
       <DependentUpon>201703240253276_added flight number to trip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703240353299_added friendemail number to trip.cs" />
+    <Compile Include="Migrations\201703240353299_added friendemail number to trip.Designer.cs">
+      <DependentUpon>201703240353299_added friendemail number to trip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -382,6 +386,7 @@
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\User\NoFlights.cshtml" />
     <Content Include="Views\User\ConfirmFlyingTrip.cshtml" />
+    <Content Include="Views\User\TellAFriend.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -431,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703240253276_added flight number to trip.resx">
       <DependentUpon>201703240253276_added flight number to trip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703240353299_added friendemail number to trip.resx">
+      <DependentUpon>201703240353299_added friendemail number to trip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

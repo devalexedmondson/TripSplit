@@ -48,6 +48,8 @@ namespace TripSplit.Models
         [Display(Name = "Flight Number")]
         public string flightNumber { get; set; }
 
+        public string friendEmail { get; set;}
+
         public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }

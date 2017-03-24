@@ -1,0 +1,29 @@
+﻿@model TripSplit.Models.Trip
+@{
+    ViewBag.Title = "TellAFriend";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tell Your Friends</h2>
+
+<h3>Trip Name: @Model.Name</h3>
+
+<ul>
+    <li>Starting Location: @Model.originInput</li>
+    <li>Ending Location : @Model.destinationInput</li>
+    <li>Trip Type: @Model.Type</li>
+    <li>Flight Number: @Model.flightNumber</li>
+    @*<li>Trip Distance: @Model.tripDistance</li>
+        <li>Trip Duration: @Model.tripDuration</li>*@
+    <li>Cost: $@Model.Cost</li>
+    @*<li>Theme: @Model.Theme.destinationTheme</li>*@
+</ul>
+
+@using (Html.BeginForm("TellAFriend", "User", FormMethod.Post, new { role = "form" }))
+{
+    <p>Who would you like to email this to?</p>
+    @Html.TextBoxFor(m => m.friendEmail, new { @class = "form-control" })
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" class="btn btn-default" value="Email Your Friend" />
+    </div>
+}

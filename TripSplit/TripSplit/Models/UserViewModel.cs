@@ -132,6 +132,13 @@ namespace TripSplit.Models
 
     }
 
+    public class TellAFriendViewModel
+    {
+        [Required]
+        [Display(Name = "Friend Email")]
+        public string friendEmail { get; set; }
+    }
+
     public class UserTripAgreementViewModel
     {
     }

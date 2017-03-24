@@ -291,6 +291,35 @@ namespace TripSplit.Controllers
             return View("CreateDrivingTrip");
         }
 
+        public ActionResult TellAFriend(int id)
+        {
+            var trip = db.Trip.SingleOrDefault(t => t.Id == id);
+
+            if (trip == null)
+            {
+                return HttpNotFound();
+            }
+            return View(trip);
+        }
+
+        [HttpPost]
+        public ActionResult TellAFriend(int id, TellAFriendViewModel model)
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var trip = db.Trip.SingleOrDefault(t => t.Id == id);
+
+            var friendEmail = model.friendEmail;
+
+            var client = new SmtpClient("smtp.mailtrap.io", 2525)
+            {
+                Credentials = new NetworkCredential("3cad2a6d8a23a7", "150ffbb33ba612"),
+                EnableSsl = true
+            };
+            client.Send(user.Email , friendEmail, "Check Out the Trip I Just Booked", "I just booked a trip on TripSplit. Here are all of the details! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nFlight Number: " + trip.flightNumber + "\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
+
+            return RedirectToAction("UserIndex", "User");
+        }
+
         //User/Trips
         //GET: Trips
         public ActionResult Trips()

@@ -11,7 +11,9 @@
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <center><p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Click on the trip name to share the details with a friend!</p></center>
+
+    <table class="table table-bordered table-hover" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -54,7 +56,7 @@ else
         {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => trip.Name)
+                        @Html.ActionLink(trip.Name, "TellAFriend", "User", new { id = trip.Id }, null)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => trip.Type)
@@ -93,14 +95,4 @@ else
                 </tr>
         }
     </table>
-
-    <div class="row">
-        <div>
-            <center>
-            <h3>Tell A Friend About Your Trip</h3>
-            <a class="btn btn-default" href="http://localhost:2437/User/TellAFriend">Share Your Trip Details &raquo;</a>
-                </center>
-        </div>
-    </div>
-
 }
