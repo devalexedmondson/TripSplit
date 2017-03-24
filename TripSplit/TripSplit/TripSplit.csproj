@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201703222226363_added departure and return date to trip table.Designer.cs">
       <DependentUpon>201703222226363_added departure and return date to trip table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703240253276_added flight number to trip.cs" />
+    <Compile Include="Migrations\201703240253276_added flight number to trip.Designer.cs">
+      <DependentUpon>201703240253276_added flight number to trip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -377,6 +381,7 @@
     <Content Include="Views\User\ViewMyTrips.cshtml" />
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\User\NoFlights.cshtml" />
+    <Content Include="Views\User\ConfirmFlyingTrip.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -423,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703222226363_added departure and return date to trip table.resx">
       <DependentUpon>201703222226363_added departure and return date to trip table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703240253276_added flight number to trip.resx">
+      <DependentUpon>201703240253276_added flight number to trip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

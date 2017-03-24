@@ -25,6 +25,12 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.destinationInput)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.returnDate)
+            </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.tripDistance)
             </th>
@@ -35,12 +41,14 @@ else
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Theme)
+                @Html.DisplayNameFor(model => model.flightNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThemeId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.totalUsersOnTrip)
             </th>
-
         </tr>
         @foreach (var trip in Model)
         {
@@ -57,6 +65,12 @@ else
                     <td>
                         @Html.DisplayFor(modelItem => trip.destinationInput)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.departureDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.returnDate)
+                    </td>
                     @*<td>
                         @Html.DisplayFor(modelItem => trip.tripDistance)
                     </td>
@@ -67,13 +81,26 @@ else
                         $@Html.DisplayFor(modelItem => trip.Cost)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => trip.Theme.destinationTheme)
+                        @Html.DisplayFor(modelItem => trip.flightNumber)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.ThemeId)
+                    </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => trip.totalUsersOnTrip)
                     </td>
                 </tr>
         }
     </table>
+
+    <div class="row">
+        <div>
+            <center>
+            <h3>Tell A Friend About Your Trip</h3>
+            <a class="btn btn-default" href="http://localhost:2437/User/TellAFriend">Share Your Trip Details &raquo;</a>
+                </center>
+        </div>
+    </div>
 
 }

@@ -1,0 +1,231 @@
+﻿@model TripSplit.Models.ConfirmFlyingTripViewModel
+@{
+    ViewBag.Title = "ConfirmFlyingTrip";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Now You're Really Leaving </h2>
+<p>Make sure to type in the exact information the is displayed above as you will potentially be splitting this with other TripSplitters.</p>
+
+
+@using (Html.BeginForm("ConfirmFlyingTrip", "User", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div>
+        <div class="row">
+            <center>
+                @Html.TextBoxFor(m => m.originInput, new { id = "origin-input", placeholder = "Enter an origin airport", Style = "height: 32px; margin-left: 12px; margin-top:12px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #fff; padding: 0 11px 0 13px; font-size: 13px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" });
+
+                @Html.TextBoxFor(m => m.destinationInput, new { id = "destination-input", placeholder = "Enter a destination airport", Style = "height: 32px; margin-left: 12px; margin-top:12px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #fff; padding: 0 11px 0 13px; font-size: 13px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" });
+            </center>
+        </div>
+     
+        <div class="hidden">
+            @* Map *@
+            <div>
+                <div id="map" style="height:400px; width: auto"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+
+                @* Trip Name *@
+                <div id="Trip Name" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 12px; margin-right: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>Name</center>
+                    </div>
+                    <div class="panel-body">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Example: Bacon Is Magic" })
+                    </div>
+                </div>
+
+                @* Flight Number *@
+                <div id="trip-privacy" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 45px; margin-right: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>Flight Number</center>
+                    </div>
+                    <div class="panel-body">
+                        @Html.TextBoxFor(m => m.flightNumber, new { @class = "form-control", placeholder = "Example: 370 " })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                @* Trip Cost *@
+                <div id="distance" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 12px; margin-right: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>How much will this trip cost you?</center>
+                    </div>
+                    <div class="panel-body">
+                        @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", placeholder = "Example: $150" })
+                    </div>
+                </div>
+
+                @* Trip Privacy *@
+                <div id="trip-privacy" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 12px; margin-right: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>Trip Privacy</center>
+                    </div>
+                    <div class="panel-body">
+                        @Html.TextBoxFor(m => m.IsPublic, new { @class = "form-control", placeholder = "Public or Private" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                @* Depature Calendar *@
+                <div id="depart-calendar" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 12px; margin-right: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>Departure</center>
+                    </div>
+                    <div class="panel-body">
+
+                        <input type="date" class="form-control" name="departureDate" required>
+                    </div>
+                </div>
+
+                @* Return Calendar *@
+                <div id="return-calendar" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 40px; margin-right: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>Return</center>
+                    </div>
+                    <div class="panel-body">
+
+                        <input type="date" class="form-control" name="returnDate" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+
+                @* Dropdown for Themes *@
+                <div id="trip-theme" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-right: 12px; margin-top: 12px; width: 200px">
+                    <div class="panel-heading">
+                        <center>Trip Theme</center>
+                    </div>
+                    <div class="panel-body">
+                        @*@Html.DropDownList("Name")*@
+                        @Html.DropDownList("Theme", (SelectList)ViewBag.Name, "Themes", new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div>
+                    @* Submit Button *@
+                        <div class="form-group" style="margin-top: 70px">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" value="Submit" />
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}
+
+
+@*
+    TODO:
+        Make an ajax call to the controller to store the information about trip distance and duration to add it to the database.
+        Use Jquery to put the data in a hidden field and then store it with a HTML helper
+*@
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            mapTypeControl: false,
+            center: { lat: 43.034134, lng: -87.911953 },
+            zoom: 13
+        });
+
+        new AutocompleteDirectionsHandler(map);
+    }
+
+    function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'DRIVING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        var modeSelector = document.getElementById('mode-selector');
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, { placeIdOnly: true });
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, { placeIdOnly: true });
+
+        this.setupClickListener('changemode-driving', 'DRIVING');
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+    }
+
+    AutocompleteDirectionsHandler.prototype.setupClickListener = function (id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function () {
+            me.travelMode = mode;
+            me.route();
+        });
+    };
+
+    AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function (autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            if (!place.place_id) {
+                window.alert("Please select an option from the dropdown list.");
+                return;
+            }
+            if (mode === 'ORIG') {
+                me.originPlaceId = place.place_id;
+            } else {
+                me.destinationPlaceId = place.place_id;
+            }
+            me.route();
+        });
+
+    };
+
+    AutocompleteDirectionsHandler.prototype.route = function () {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+            return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+            origin: { 'placeId': this.originPlaceId },
+            destination: { 'placeId': this.destinationPlaceId },
+            travelMode: this.travelMode
+        }, function (response, status) {
+            if (status === 'OK') {
+                me.directionsDisplay.setDirections(response);
+
+                //Display the duration
+                document.getElementById('duration').innerHTML += tripDuration = "<center>" + Math.round(response.routes[0].legs[0].duration.value / 60) / 1 + " minutes</center>";
+
+                //Dispplay the distance
+                tripDistance = document.getElementById('distance').innerHTML += "<center>" + Math.round(response.routes[0].legs[0].distance.value / 1609.34) / 1 + " miles</center>";
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    };
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgOOcTK9Xcw8WpvcPhD_mD0Um2HHFCqLI&libraries=places&callback=initMap"></script>

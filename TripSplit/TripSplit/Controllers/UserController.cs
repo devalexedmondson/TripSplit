@@ -222,6 +222,7 @@ namespace TripSplit.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult ConfirmFlyingTrip(ConfirmFlyingTripViewModel model)
         {
             var type = "Flying";
@@ -239,14 +240,15 @@ namespace TripSplit.Controllers
                 ThemeId = int.Parse(model.Theme),
                 totalUsersOnTrip = model.totalUsersOnTrip + 1,
                 departureDate = model.departureDate,
-                returnDate = model.returnDate
+                returnDate = model.returnDate,
+                flightNumber = model.flightNumber
             };
 
-            //var user = db.Users.Find(User.Identity.GetUserId());
-            //trip.Users = new List<ApplicationUser>();
-            //trip.Users.Add(user);
-            //db.Trip.Add(trip);
-            //db.SaveChanges();
+            var user = db.Users.Find(User.Identity.GetUserId());
+            trip.Users = new List<ApplicationUser>();
+            trip.Users.Add(user);
+            db.Trip.Add(trip);
+            db.SaveChanges();
 
             //MAIL TO CUSTOMER USING MAILTRAP.IO
             //var client = new SmtpClient("smtp.mailtrap.io", 2525)

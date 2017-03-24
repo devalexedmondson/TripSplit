@@ -84,21 +84,17 @@
     @ViewBag.url
     <hr />*@
 <h2>Flight Data</h2>
-<a class="btn btn-default" href="http://localhost:2437/User/CreateFlyingTrip">Fly &raquo;</a>
+<p>A list of flights is listed below. Please remember this information for the flight you have selected. You will be asked to fill in the apporiate information on the next page.</p>
 <div id="FlightInfo"></div>
+<p>Make sure to type in the exact information the is displayed above as you will potentially be splitting this with other TripSplitters.</p>
+<a class="btn btn-default" href="http://localhost:2437/User/ConfirmFlyingTrip">Confirm Trip &raquo;</a>
 @*@ViewBag.data*@
 
 <script>
 
-
-    //Figure out how to display data on the page.
-
     var data = @Html.Raw(Json.Encode(@ViewBag.data));
     var dataobject = JSON.parse(data);
-
-
     var flightArray = dataobject.PricedItineraries;
-
     for(var flight in flightArray)
     {
         //Flights To Location

@@ -41,12 +41,14 @@ else
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.flightNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ThemeId )
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.totalUsersOnTrip)
             </th>
-
         </tr>
         @foreach (var trip in Model)
         {
@@ -79,6 +81,9 @@ else
                     </td>*@
                     <td>
                         $@Html.DisplayFor(modelItem => trip.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => trip.flightNumber)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => trip.ThemeId )

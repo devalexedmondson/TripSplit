@@ -45,6 +45,9 @@ namespace TripSplit.Models
         [ForeignKey("Theme")]
         public int ThemeId { get; set; }
 
+        [Display(Name = "Flight Number")]
+        public string flightNumber { get; set; }
+
         public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 }

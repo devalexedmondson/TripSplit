@@ -242,8 +242,7 @@ TODO:
                 me.directionsDisplay.setDirections(response);
 
                 //Display the duration
-                document.getElementById('duration').innerHTML +=
-             tripDuration = "<center>" + Math.round(response.routes[0].legs[0].duration.value / 60) / 1 + " minutes</center>";
+                document.getElementById('duration').innerHTML += tripDuration = "<center>" + Math.round(response.routes[0].legs[0].duration.value / 60) / 1 + " minutes</center>";
 
                 //Dispplay the distance
                 tripDistance = document.getElementById('distance').innerHTML += "<center>" + Math.round(response.routes[0].legs[0].distance.value / 1609.34) / 1 + " miles</center>";
