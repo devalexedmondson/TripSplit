@@ -62,6 +62,7 @@
                         <input name="methodName" type="hidden" value="InstaFlights Search" class="form-control">
                         <input name="httpMethod" type="hidden" value="GET" class="form-control">
                         <input name="methodUri" type="hidden" value="/v1/shop/flights" class="form-control">
+                        <input name="Cost" id="cost" type="hidden" value="/v1/shop/flights" class="form-control">
 
                         <button type="reset" class="btn btn-default">Cancel</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,32 +80,67 @@
 
 
 
-<h2>Url</h2>
-@ViewBag.url
-<hr />
-<h2>Data</h2>
-@ViewBag.data
+@*<h2>Url</h2>
+    @ViewBag.url
+    <hr />*@
+<h2>Flight Data</h2>
+<a class="btn btn-default" href="http://localhost:2437/User/CreateFlyingTrip">Fly &raquo;</a>
+<div id="FlightInfo"></div>
+@*@ViewBag.data*@
 
 <script>
-    //TODO
-    //Parse data the correct way
-    //Figure out how to display data on the page. 
-    
-    var data = @ViewBag.data;
-    var dataobject = JSON.parse(data);
-    
-    var airItinerary ;
-    var flightNumber = dataObject.OriginDestinationOption[0] ;
-    var departureTime ;
-    var arrivalTime ;
-    var totalFare  ;
-    var seatsRemaining ;
 
-    function getFlights(){
-        document.getElementById('FlightInfo').innerHTML = '<table><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Seats Remaining</th></tr>' + AirItinerary.forEach() + '<tr><td>' + flightNumber + '</td><td>' + departureTime + '</td><td>' + arrivalTime + '</td><td>' + totalFare + '</td><td>' + seatsRemaining + '</td></tr></table><br/><br><button type="submit" class="btn btn-primary">Submit</button> '
+
+    //Figure out how to display data on the page.
+
+    var data = @Html.Raw(Json.Encode(@ViewBag.data));
+    var dataobject = JSON.parse(data);
+
+
+    var flightArray = dataobject.PricedItineraries;
+
+    for(var flight in flightArray)
+    {
+        //Flights To Location
+        var firstFlightNumber = flightArray[flight].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber;
+        var firstDepartureTime = flightArray[flight].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime;
+        var firstArrivalTime = flightArray[flight].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime;
+
+        //Flights Back From Location
+        var secondFlightNumber = flightArray[flight].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber;
+        var secondDepartureTime = flightArray[flight].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime;
+        var secondArrivalTime = flightArray[flight].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime;
+
+        //Total ticket price for one customer
+        var totalFare = flightArray[flight].AirItineraryPricingInfo.ItinTotalFare.TotalFare.Amount;
+
+        //Seats remaining (past MVP)
+        //var seatsRemaining = dataobject.PricedItineraries[0].AirItineraryPricingInfo.FareInfos.FareInfo[0].TPA_Extensions.SeatsRemaining.Number;
+
+
+        document.getElementById('FlightInfo')
+        document.getElementById('FlightInfo').innerHTML += '<table class="table table-bordered table-hover" style="margin-top: 12px"><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Returning Flight Number</th><th>Returning Flight Departure Time</th><th>Returning Flight Arrival Time</th></tr><tr><td>' + firstFlightNumber + '</td><td>' + firstDepartureTime + '</td><td>' + firstArrivalTime + '</td><td name="Cost">$' + totalFare + '</td><td>' + secondFlightNumber + '</td><td>' + secondDepartureTime + '</td><td>' + secondArrivalTime + '</tr></table><br/><br>';
     }
 
-    document.getElementById('FlightInfo')
-    //document.getElementById('FlightInfo').innerHTML = '<h3>Flight Information</h3><br/>'
+    ////Flights To Location
+    //var firstFlightNumber = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber;
+    //var firstDepartureTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime;
+    //var firstArrivalTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime;
+
+    ////Flights Back From Location
+    //var secondFlightNumber = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber;
+    //var secondDepartureTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime;
+    //var secondArrivalTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime;
+
+    ////Total ticket price for one customer
+    //var totalFare = dataobject.PricedItineraries[0].AirItineraryPricingInfo.ItinTotalFare.TotalFare.Amount;
+
+    
+
+    //document.getElementById('FlightInfo')
+    //document.getElementById('FlightInfo').innerHTML += '<table class="table table-bordered table-hover"><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Returning Flight Number</th><th>Returning Flight Departure Time</th><th>Returning Flight Arrival Time</th></tr><tr><td>' + firstFlightNumber + '</td><td>' + firstDepartureTime + '</td><td>' + firstArrivalTime + '</td><td name="Cost">$' + totalFare + '</td><td>' + secondFlightNumber + '</td><td>' + secondDepartureTime + '</td><td>' + secondArrivalTime + '</tr></table><br/><br>';
+    //document.getElementById("cost").value = totalFare;
+
+
 
 </script>

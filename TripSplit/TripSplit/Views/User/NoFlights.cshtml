@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "NoFlights";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6" style="margin-top: 150px">
+        <center>
+            <h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">You've Been Grounded!</h1>
+            <p style="font-size: 17px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">It looks like there are no flights for the dates that you have selected. Click one of the buttons bellow to go back and select new days or create a driving trip instead. Happy splitting!</p>
+            <a class="btn btn-default" href="http://localhost:2437/User/CreateFlyingTrip">Flying Trip &raquo;</a>
+            <a class="btn btn-default" href="http://localhost:2437/User/CreateDrivingTrip">Driving Trip &raquo;</a>
+        </center>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px">
+        <img src="~/Content/airportCollage.jpg" alt="explorebook" width="600" height="500">
+    </div>
+</div>
+

@@ -4,14 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Trips</h2>
+<center><h2>Happy Splitting!</h2></center>
 @if (!Model.Any())
 {
     <p>We don't have any available trips yet.</p>
 }
 else
 {
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" style="margin-top: 20px">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
