@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<center><h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Happy Splitting!</h2></center>
+<center><h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 30px">Happy Splitting!</h2></center>
 @if (!Model.Any())
 {
     <p>We don't have any available trips yet.</p>
@@ -32,11 +32,11 @@ else
                 @Html.DisplayNameFor(model => model.returnDate)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.tripDistance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tripDuration)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.tripDistance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tripDuration)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
@@ -44,15 +44,18 @@ else
                 @Html.DisplayNameFor(model => model.flightNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ThemeId )
+                @Html.DisplayNameFor(model => model.ThemeId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.totalUsersOnTrip)
             </th>
+            <th>
+                <p>Shared Ratio</p>
+            </th>
         </tr>
         @foreach (var trip in Model)
         {
-            if (trip.IsPublic == "public")
+            if (trip.IsPublic == "public" && (trip.departureDate > DateTime.Now))
             {
                 <tr>
                     <td>
@@ -74,11 +77,11 @@ else
                         @Html.DisplayFor(modelItem => trip.returnDate)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => trip.tripDistance)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => trip.tripDuration)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => trip.tripDistance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => trip.tripDuration)
+                        </td>*@
                     <td>
                         $@Html.DisplayFor(modelItem => trip.Cost)
                     </td>
@@ -86,11 +89,12 @@ else
                         @Html.DisplayFor(modelItem => trip.flightNumber)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => trip.ThemeId )
+                        @Html.DisplayFor(modelItem => trip.ThemeId)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => trip.totalUsersOnTrip)
                     </td>
+                    <td></td>
                 </tr>
             }
         }
@@ -98,6 +102,6 @@ else
 
 }
 
-
+<img src="~/Content/travelwaitingCollage.jpg" alt="travelcollage" width="1140" height="300">
     
 

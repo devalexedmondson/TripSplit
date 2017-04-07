@@ -44,8 +44,8 @@ namespace TripSplit.Models
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
         public int totalUsersOnTrip { get; set; }
-        public string departureDate { get; set; }
-        public string returnDate { get; set; }
+        public DateTime departureDate { get; set; }
+        public DateTime returnDate { get; set; }
 
     }
 
@@ -82,8 +82,8 @@ namespace TripSplit.Models
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
         public int totalUsersOnTrip { get; set; }
-        public string departureDate { get; set; }
-        public string returnDate { get; set; }
+        public DateTime departureDate { get; set; }
+        public DateTime returnDate { get; set; }
     }
 
     public class ConfirmFlyingTripViewModel
@@ -123,8 +123,8 @@ namespace TripSplit.Models
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
         public int totalUsersOnTrip { get; set; }
-        public string departureDate { get; set; }
-        public string returnDate { get; set; }
+        public DateTime departureDate { get; set; }
+        public DateTime returnDate { get; set; }
     }
 
     public class TripsViewModel

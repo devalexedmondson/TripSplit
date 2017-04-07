@@ -17,9 +17,9 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger"})
         <div>
-            @Html.TextBoxFor(m => m.originInput, new { id = "origin-input", placeholder = "Enter an origin location", Style = "height: 32px; margin-left: 12px; margin-top:12px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #fff; padding: 0 11px 0 13px; font-size: 13px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" });
+            @Html.TextBoxFor(m => m.originInput, new { id = "origin-input", placeholder = "Enter an origin location", Style = "height: 32px; margin-left: 12px; margin-top:12px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #fff; padding: 0 11px 0 13px; font-size: 13px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif", required = "required" });
 
-            @Html.TextBoxFor(m => m.destinationInput, new { id = "destination-input", placeholder = "Enter a destination location", Style = "height: 32px; margin-left: 12px; margin-top:12px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #fff; padding: 0 11px 0 13px; font-size: 13px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" });
+            @Html.TextBoxFor(m => m.destinationInput, new { id = "destination-input", placeholder = "Enter a destination location", Style = "height: 32px; margin-left: 12px; margin-top:12px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #fff; padding: 0 11px 0 13px; font-size: 13px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif", required = "required" });
 
 
             <div id="mode-selector" class="controls" style="margin-left:12px; margin-top: 12px;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); background-color: #4d90fe; padding: 5px 11px 0px 11px; padding: 0 11px 0 13px">
@@ -45,7 +45,7 @@
                             <center>Name</center>
                         </div>
                         <div class="panel-body">
-                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Example: Bacon Is Magic" })
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Example: Bacon Is Magic", required = "required" })
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@
                             <center>How much will this trip cost you?</center>
                         </div>
                         <div class="panel-body">
-                            @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", placeholder = "Example: $150" })
+                            @Html.TextBoxFor(m => m.Cost, new { @class = "form-control", placeholder = "Example: $150", required = "required", @type = "number" })
                         </div>
                     </div>
                   
@@ -91,7 +91,11 @@
                             <center>Trip Privacy</center>
                         </div>
                         <div class="panel-body">
-                            @Html.TextBoxFor(m => m.IsPublic, new { @class = "form-control", placeholder = "Public or Private" })
+                            <select class="form-control" placeholder="Privacy" name="IsPublic" required>
+                                <option></option>
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
                         </div>
                     </div>
 
@@ -102,7 +106,7 @@
                         </div>
                         <div class="panel-body">
                             @*@Html.DropDownList("Name")*@
-                            @Html.DropDownList("Theme", (SelectList)ViewBag.Name, "Themes", new { @class = "form-control" })
+                            @Html.DropDownList("Theme", (SelectList)ViewBag.Name, "Themes", new { @class = "form-control", required = "required" })
                         </div>
                        
                     </div>
@@ -110,7 +114,7 @@
 
                 <div class="col-md-3">
                     @* Depature Calendar *@
-                    <div id="depart-calendar" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 12px; margin-right: 12px; width: 200px">
+                    <div id="depart-calendar" class="panel panel-default" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 12px; margin-right: 12px; width: 200px" >
                         <div class="panel-heading">
                             <center>Departure</center>
                         </div>
@@ -242,7 +246,7 @@ TODO:
                 me.directionsDisplay.setDirections(response);
 
                 //Display the duration
-                document.getElementById('duration').innerHTML += tripDuration = "<center>" + Math.round(response.routes[0].legs[0].duration.value / 60) / 1 + " minutes</center>";
+                document.getElementById('duration').innerHTML += "<center>" + Math.round(response.routes[0].legs[0].duration.value / 60) / 1 + " minutes</center>";
 
                 //Dispplay the distance
                 tripDistance = document.getElementById('distance').innerHTML += "<center>" + Math.round(response.routes[0].legs[0].distance.value / 1609.34) / 1 + " miles</center>";

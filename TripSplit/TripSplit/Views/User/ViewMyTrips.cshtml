@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<TripSplit.Models.Trip>
+@using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "ViewMyTrips";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>My Trips</h2>
 @if (!Model.Any())
 {
     <p>You don't have any available trips yet.</p>
 }
 else
 {
-    <center><p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Click on the trip name to share the details with a friend!</p></center>
+    <center><h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 30px">@(User.Identity.GetUserName())'s Trips</h2></center>
+    <center><p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 30px">Click on the trip name to share the details with a friend!</p></center>
 
     <table class="table table-bordered table-hover" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
         <tr>
@@ -34,11 +34,11 @@ else
                 @Html.DisplayNameFor(model => model.returnDate)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.tripDistance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tripDuration)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.tripDistance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tripDuration)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Cost)
             </th>
@@ -54,6 +54,8 @@ else
         </tr>
         @foreach (var trip in Model)
         {
+            if (trip.departureDate > DateTime.Now)
+            {
                 <tr>
                     <td>
                         @Html.ActionLink(trip.Name, "TellAFriend", "User", new { id = trip.Id }, null)
@@ -74,11 +76,11 @@ else
                         @Html.DisplayFor(modelItem => trip.returnDate)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => trip.tripDistance)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => trip.tripDuration)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => trip.tripDistance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => trip.tripDuration)
+                        </td>*@
                     <td>
                         $@Html.DisplayFor(modelItem => trip.Cost)
                     </td>
@@ -93,6 +95,8 @@ else
                         @Html.DisplayFor(modelItem => trip.totalUsersOnTrip)
                     </td>
                 </tr>
+            }
+
         }
     </table>
 }

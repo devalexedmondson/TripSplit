@@ -191,7 +191,7 @@ namespace TripSplit.Controllers
                 #endregion
 
                 string data = string.Empty;
-                string AccessToken = "T1RLAQLjTRPZqRiDMcE8VEB5uhXiOWAPjhBO3mrj2EYrQaxvBlbNA1TeAADAEtddeprYMViaktgVmIpGnYC5tqlmtKkoJaWMKQGLrNp+4VLF0fFq4TNM5G71sNNcae7nN0KpJzcYXcknTIaCFQkCl2RIT/0P8eAEKq1Z39Noyie25ldztGDqo1xe12Kf3M9j7JhzLsMh6PqAjWWOXFjNzj456w7Ov0GTMrRGoGb9sjc3zauBBys4Zt1Dy0uIfphAsGwBXz9MBAfOmgx+3xD4EeU5UdOLwvAuNkScTt60K9Qw1MXPeUJCm8v+PT7F";
+                string AccessToken = "T1RLAQIgOwqxiTtuAKtomp97LTdmlgMpxBBOcnoPfKwxt2fO5lhGSaSXAADAueBFRnkvhXajTlKQg7pw/cBWJ261FQgddKLBUpoOP1WnEVOpUvKm4x5bfHJJAl53hqH3a71JgdurkOabKBoXJmGkBUCKPfE01s6l5JtN0RXar1D0F24LkIH3/YlHLxavICfGlISe/gnAH0tPVPXg+SZlvL4ugZfFOOXbCL1VEEsbxfik7TPGhYLm7YaZ/4sxkTEoXVp4Hh0n2WmUMMmJTPxNonwNvttFnXv5fMUUs6TvGllcUAxthTVyVOdc5Jra";
                 using (var client = new HttpClient())
                 {
                     try
@@ -350,6 +350,8 @@ namespace TripSplit.Controllers
             var trip = db.Trip.SingleOrDefault(t => t.Id == id);
             trip.Cost = trip.Cost / 2;
             trip.totalUsersOnTrip = trip.totalUsersOnTrip + 1;
+            trip.Users = new List<ApplicationUser>();
+            trip.Users.Add(user);
             db.SaveChanges();
             
             //MAIL TO CUSTOMER USING MAILTRAP.IO

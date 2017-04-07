@@ -26,11 +26,13 @@ namespace TripSplit.Models
         [Display(Name = "Trip Destination")]
         public string destinationInput { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [Display(Name = "Departure Date")]
-        public string departureDate { get; set; }
+        public DateTime departureDate { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [Display(Name = "Return Date")]
-        public string returnDate { get; set; }
+        public DateTime returnDate { get; set; }
 
         public double Cost { get; set; }
 

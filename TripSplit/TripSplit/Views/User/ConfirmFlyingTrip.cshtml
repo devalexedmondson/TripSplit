@@ -70,7 +70,11 @@
                         <center>Trip Privacy</center>
                     </div>
                     <div class="panel-body">
-                        @Html.TextBoxFor(m => m.IsPublic, new { @class = "form-control", placeholder = "Public or Private" })
+                        <select class="form-control" placeholder="Privacy" name="IsPublic" required>
+                            <option></option>
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                        </select>
                     </div>
                 </div>
 

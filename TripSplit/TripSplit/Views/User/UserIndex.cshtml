@@ -20,7 +20,7 @@
 
 
 <div class="row">
-    <div class="col-md-6" style="margin-top: 100px">
+    <div class="col-md-6">
         <center>
             <h2>Create Your Own Trip</h2>
             <p>
@@ -31,11 +31,9 @@
         </center>
     </div>
 
-    <div class="col-md-6">
-        @* Embedded calendar *@
-        <h3>@(User.Identity.GetUserName()) Calendar</h3>
-        <a class="btn btn-default" href="http://localhost:2437/User/ViewMyTrips">View Your Trips &raquo;</a>
-        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FChicago" style="border-width:0" width="450" height="300" frameborder="0" scrolling="no"></iframe>
+    <div class="col-md-6" style="margin-top: 95px">
+        @* View your own trips button *@
+        <a class="btn btn-default" href="http://localhost:2437/User/ViewMyTrips">@(User.Identity.GetUserName()) Trips &raquo;</a>
     </div>
 </div>
 

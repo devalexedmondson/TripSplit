@@ -8,22 +8,44 @@
                 {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 }
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                else
+                {
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                }
+
             </button>
-            @Html.ActionLink("TripSplit", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @if (User.IsInRole("User"))
+            {
+                @Html.ActionLink("TripSplit", "UserIndex", "User", new { area = "" }, new { @class = "navbar-brand" })
+            }
+            else
+            {
+                @Html.ActionLink("TripSplit", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            }
+           
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
                 @if (User.IsInRole("User"))
                 {
-                    <li>@Html.ActionLink("Your Page", "UserIndex", "User")</li>
+                    <li>@Html.ActionLink("Home", "UserIndex", "User")</li>
                     <li>@Html.ActionLink("Trips", "Trips", "User")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 }
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                else
+                {
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                }
+
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -31,9 +53,9 @@
 </div>
 
 @*<li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trips <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-        <li>@Html.ActionLink("View Trips", "Trips", "User")</li>
-        <li>@Html.ActionLink("Create A Trip", "CreateATrip", "User")</li>
-    </ul>
-</li>*@
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trips <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("View Trips", "Trips", "User")</li>
+            <li>@Html.ActionLink("Create A Trip", "CreateATrip", "User")</li>
+        </ul>
+    </li>*@

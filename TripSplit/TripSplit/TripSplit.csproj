@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201703240353299_added friendemail number to trip.Designer.cs">
       <DependentUpon>201703240353299_added friendemail number to trip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704061749500_changed departure and return date types to DateTime.cs" />
+    <Compile Include="Migrations\201704061749500_changed departure and return date types to DateTime.Designer.cs">
+      <DependentUpon>201704061749500_changed departure and return date types to DateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -440,6 +444,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703240353299_added friendemail number to trip.resx">
       <DependentUpon>201703240353299_added friendemail number to trip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704061749500_changed departure and return date types to DateTime.resx">
+      <DependentUpon>201704061749500_changed departure and return date types to DateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
