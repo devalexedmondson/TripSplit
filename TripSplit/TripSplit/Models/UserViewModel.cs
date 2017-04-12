@@ -37,9 +37,12 @@ namespace TripSplit.Models
         [Display(Name = "Cost of trip?")]
         public double Cost { get; set; }
 
-        [Required]
-        [Display(Name = "Theme")]
-        public string Theme { get; set; }
+        //Setting themes to list so they can be saved to db the correct way
+        //public IEnumerable<Theme> Theme { get; set; }
+
+        //[Required]
+        //[Display(Name = "Theme")]
+        //public string Theme { get; set; }
 
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
@@ -75,9 +78,13 @@ namespace TripSplit.Models
         [Display(Name = "Cost of trip?")]
         public double Cost { get; set; }
 
+        //[Required]
+        //[Display(Name = "Theme")]
+        //public string Theme { get; set; }
+
         [Required]
-        [Display(Name = "Theme")]
-        public string Theme { get; set; }
+        [Display(Name = "Flight Number")]
+        public string flightNumber { get; set; }
 
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }
@@ -116,9 +123,9 @@ namespace TripSplit.Models
         [Display(Name = "Flight Number")]
         public string flightNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Theme")]
-        public string Theme { get; set; }
+        //[Required]
+        //[Display(Name = "Theme")]
+        //public string Theme { get; set; }
 
         public double tripDistance { get; set; }
         public double tripDuration { get; set; }

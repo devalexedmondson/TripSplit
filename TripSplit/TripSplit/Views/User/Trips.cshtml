@@ -43,15 +43,15 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.flightNumber)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.ThemeId)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.totalUsersOnTrip)
             </th>
-            <th>
+            @*<th>
                 <p>Shared Ratio</p>
-            </th>
+            </th>*@
         </tr>
         @foreach (var trip in Model)
         {
@@ -59,7 +59,14 @@ else
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(trip.Name, "Detail", "User", new { id = trip.Id }, null)
+                        @if (trip.Cost < 5)
+                        {
+                            @Html.DisplayFor(modelItem => trip.Name)
+                        }
+                        else
+                        {
+                            @Html.ActionLink(trip.Name, "Detail", "User", new { id = trip.Id }, null)
+                        }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => trip.Type)
@@ -83,18 +90,35 @@ else
                             @Html.DisplayFor(modelItem => trip.tripDuration)
                         </td>*@
                     <td>
-                        $@Html.DisplayFor(modelItem => trip.Cost)
+                        @if (trip.Cost < 5)
+                        {
+                            @Html.Raw("Full trip")
+                        }
+                        else
+                        {
+                             @Html.DisplayFor(modelItem => trip.Cost)
+                        }
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => trip.flightNumber)
+                        @if (trip.Type == "Driving")
+                        {
+                            
+                            @Html.Raw("N/A")
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => trip.flightNumber)
+                        }
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => trip.ThemeId)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => trip.totalUsersOnTrip)
                     </td>
-                    <td></td>
+                    @*<td>
+                        Will be shared ratio
+                    </td>*@
                 </tr>
             }
         }

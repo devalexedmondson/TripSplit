@@ -274,6 +274,10 @@
     <Compile Include="Migrations\201704061749500_changed departure and return date types to DateTime.Designer.cs">
       <DependentUpon>201704061749500_changed departure and return date types to DateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704120311314_Took out theme from trip model.cs" />
+    <Compile Include="Migrations\201704120311314_Took out theme from trip model.Designer.cs">
+      <DependentUpon>201704120311314_Took out theme from trip model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -447,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704061749500_changed departure and return date types to DateTime.resx">
       <DependentUpon>201704061749500_changed departure and return date types to DateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704120311314_Took out theme from trip model.resx">
+      <DependentUpon>201704120311314_Took out theme from trip model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

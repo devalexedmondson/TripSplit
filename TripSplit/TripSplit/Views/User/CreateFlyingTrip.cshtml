@@ -115,28 +115,16 @@
 
 
         document.getElementById('FlightInfo')
-        document.getElementById('FlightInfo').innerHTML += '<table class="table table-bordered table-hover" style="margin-top: 12px"><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Returning Flight Number</th><th>Returning Flight Departure Time</th><th>Returning Flight Arrival Time</th></tr><tr><td>' + firstFlightNumber + '</td><td>' + firstDepartureTime + '</td><td>' + firstArrivalTime + '</td><td name="Cost">$' + totalFare + '</td><td>' + secondFlightNumber + '</td><td>' + secondDepartureTime + '</td><td>' + secondArrivalTime + '</tr></table><br/><br>';
+        document.getElementById('FlightInfo').innerHTML += '<table class="table table-bordered table-hover" style="margin-top: 12px"><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Returning Flight Number</th><th>Returning Flight Departure Time</th><th>Returning Flight Arrival Time</th></tr><tr><td name="flightNumber">' + firstFlightNumber + '</td><td name="departureDate">' + firstDepartureTime + '</td><td>' + firstArrivalTime + '</td><td name="Cost">$' + totalFare + '</td><td>' + secondFlightNumber + '</td><td>' + secondDepartureTime + '</td><td>' + secondArrivalTime + '</td></tr></table>';
     }
-
-    ////Flights To Location
-    //var firstFlightNumber = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].FlightNumber;
-    //var firstDepartureTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].DepartureDateTime;
-    //var firstArrivalTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[0].FlightSegment[0].ArrivalDateTime;
-
-    ////Flights Back From Location
-    //var secondFlightNumber = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].FlightNumber;
-    //var secondDepartureTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].DepartureDateTime;
-    //var secondArrivalTime = dataobject.PricedItineraries[0].AirItinerary.OriginDestinationOptions.OriginDestinationOption[1].FlightSegment[0].ArrivalDateTime;
-
-    ////Total ticket price for one customer
-    //var totalFare = dataobject.PricedItineraries[0].AirItineraryPricingInfo.ItinTotalFare.TotalFare.Amount;
-
     
+
+    //<form method="POST" action="User/CreateFlyingTrip" id="flightForm></form>
+    //<button type ="submit" form="flightForm" value = "Submit">Submit</button>
+
 
     //document.getElementById('FlightInfo')
     //document.getElementById('FlightInfo').innerHTML += '<table class="table table-bordered table-hover"><tr><th>Flight Number</th><th>Departure Time</th><th>Arrival Time</th><th>Ticket Price</th><th>Returning Flight Number</th><th>Returning Flight Departure Time</th><th>Returning Flight Arrival Time</th></tr><tr><td>' + firstFlightNumber + '</td><td>' + firstDepartureTime + '</td><td>' + firstArrivalTime + '</td><td name="Cost">$' + totalFare + '</td><td>' + secondFlightNumber + '</td><td>' + secondDepartureTime + '</td><td>' + secondArrivalTime + '</tr></table><br/><br>';
     //document.getElementById("cost").value = totalFare;
-
-
 
 </script>

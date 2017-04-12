@@ -43,9 +43,12 @@ namespace TripSplit.Models
         [Display(Name = "Total Trip Splitters")]
         public int totalUsersOnTrip { get; set; }
 
-        public Theme Theme { get; set; }
-        [ForeignKey("Theme")]
-        public int ThemeId { get; set; }
+        //public Theme Theme { get; set; }
+        //[Display(Name = "Theme")]
+        //[ForeignKey("Theme")]
+        //public int ThemeId { get; set; }
+
+
 
         [Display(Name = "Flight Number")]
         public string flightNumber { get; set; }

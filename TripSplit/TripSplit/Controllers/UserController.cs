@@ -37,7 +37,9 @@ namespace TripSplit.Controllers
         //GET: CreateDrivingTrip
         public ActionResult CreateDrivingTrip()
         {
-            ViewBag.Name = new SelectList(db.Theme.ToList(), "Id", "destinationTheme");
+
+            //Change "Id" to "destinationTheme" to capture actual theme displayed
+            ViewBag.Name = new SelectList(db.Theme.ToList(), "destinationTheme", "destinationTheme");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace TripSplit.Controllers
                 Cost = model.Cost,
                 tripDistance = model.tripDistance,
                 tripDuration = model.tripDuration,
-                ThemeId = int.Parse(model.Theme),
+                //ThemeId = int.Parse(model.Theme),
                 totalUsersOnTrip = model.totalUsersOnTrip+1,
                 departureDate = model.departureDate,
                 returnDate = model.returnDate
@@ -99,7 +101,7 @@ namespace TripSplit.Controllers
         }
         
       
-       public async Task<ActionResult>CreateFlyingTrip(CreateFlyingTripViewModel model)
+       public async Task<ActionResult>CreateFlyingTrip()
         {
             //CAN ONLY REQUEST FLIGHTS THAT ARE 6 MONTHS OUT. EXAMPLE: AT THE TIME THAT THIS APPLICATION WAS MADE (3 / 22 / 17) CANNOT REQUEST ANY FLIGHTS THAT ARE SCHEDULED IN OCTOBER(10 / 01 / 2017) RIGHT NOW. 
             //CAN ONLY REQUEST TRIPS THAT ARE 16 DAYS LONG, ANY LONGER THAN THAT WILL THROW AN ERROR 
@@ -207,12 +209,14 @@ namespace TripSplit.Controllers
 
                 ViewBag.url = url;
                 ViewBag.data = data;
-
-            //USED TO RETURN JSON SO THE PAGE DOES NOT RELOAD EVERY TIME YOU SELECT AN OPTION
-            //return Json.Encode(data);
+                
+                //USED TO RETURN JSON SO THE PAGE DOES NOT RELOAD EVERY TIME YOU SELECT AN OPTION
+                //return Json.Encode(data);
             }
             return View();
         }
+        
+
 
         //USER/CONFIRMFLYINGTRIP
         //GET: ConfirmFlyingTrip
@@ -237,7 +241,7 @@ namespace TripSplit.Controllers
                 Cost = model.Cost,
                 tripDistance = model.tripDistance,
                 tripDuration = model.tripDuration,
-                ThemeId = int.Parse(model.Theme),
+                //ThemeId = int.Parse(model.Theme),
                 totalUsersOnTrip = model.totalUsersOnTrip + 1,
                 departureDate = model.departureDate,
                 returnDate = model.returnDate,
@@ -251,12 +255,12 @@ namespace TripSplit.Controllers
             db.SaveChanges();
 
             //MAIL TO CUSTOMER USING MAILTRAP.IO
-            //var client = new SmtpClient("smtp.mailtrap.io", 2525)
-            //{
-            //    Credentials = new NetworkCredential("3cad2a6d8a23a7", "150ffbb33ba612"),
-            //    EnableSsl = true
-            //};
-            //client.Send("MasterSplitter@TripSplit.com", user.Email, "TripSplit", "Congrats on booking your trip! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nDeparture Date: " + trip.departureDate + "\nReturn Date: " + trip.returnDate +"\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
+            var client = new SmtpClient("smtp.mailtrap.io", 2525)
+            {
+                Credentials = new NetworkCredential("3cad2a6d8a23a7", "150ffbb33ba612"),
+                EnableSsl = true
+            };
+            client.Send("MasterSplitter@TripSplit.com", user.Email, "TripSplit", "Congrats on booking your trip! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nDeparture Date: " + trip.departureDate + "\nReturn Date: " + trip.returnDate + "\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
 
             return RedirectToAction("VerifyTrip", "User");
         }
@@ -353,7 +357,7 @@ namespace TripSplit.Controllers
             trip.Users = new List<ApplicationUser>();
             trip.Users.Add(user);
             db.SaveChanges();
-            
+
             //MAIL TO CUSTOMER USING MAILTRAP.IO
             var client = new SmtpClient("smtp.mailtrap.io", 2525)
             {
@@ -361,7 +365,7 @@ namespace TripSplit.Controllers
                 EnableSsl = true
             };
             client.Send("MasterSplitter@TripSplit.com", user.Email, "You Split The Trip!", "Congrats on booking and splitting your trip! \nHere are your trip details. \nTrip Name: " + trip.Name + "\nTrip Type:" + trip.Type + "\nStart Location: " + trip.originInput + "\nEnd Location: " + trip.destinationInput + "\nFlight Number: " + trip.flightNumber + "\nTrip Cost: $" + trip.Cost + "\nTotal People on trip: " + trip.totalUsersOnTrip);
-            
+
             return RedirectToAction("VerifyTrip", "User");
 
             #region MailGun
